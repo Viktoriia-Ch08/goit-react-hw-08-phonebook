@@ -1,57 +1,35 @@
-import ContactForm from 'components/ContactForm/ContactForm';
-import Filter from 'components/Filter/Filter';
-import ContactsList from 'components/ContactsList/ContactsList';
-import { Container, Headline, Title } from './App.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations/operations';
-import { useEffect, CSSProperties } from 'react';
-import { ClipLoader } from 'react-spinners';
+import { useDispatch } from 'react-redux';
+import { refreshUserThunk } from 'redux/operations/auth.operations';
+import { useEffect } from 'react';
+import {} from 'react-spinners';
 import { failedNotification } from 'services/notifications';
+import Layout from './Layout';
+import Home from 'pages/Home';
+import { Route, Routes } from 'react-router-dom';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
+import NotFound from 'pages/NotFound';
 
 export default function App() {
-  const contacts = useSelector(selectContacts);
-  const loading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
-  const override: CSSProperties = {
-    display: 'block',
-    margin: '0 auto',
-    borderColor: 'black',
-  };
-
   useEffect(() => {
-    dispatch(fetchContacts())
+    dispatch(refreshUserThunk())
       .unwrap()
       .catch(error =>
-        failedNotification(
-          `😭 Sorry, smth wrong with your URL: ${error.message}`
-        )
+        failedNotification(`😭 Sorry, smth went wrong: ${error.message}`)
       );
   }, [dispatch]);
-
   return (
-    <Container>
-      <Headline>Phonebook</Headline>
-      <ContactForm />
-      {contacts.length !== 0 && (
-        <>
-          <Title>Contacts</Title>
-          <Filter />
-          <ContactsList />
-        </>
-      )}
-      {contacts.length === 0 && !loading && (
-        <Title>There are no contacts</Title>
-      )}
-      <ClipLoader
-        color={'black'}
-        loading={loading}
-        cssOverride={override}
-        size={80}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-    </Container>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </>
   );
 }

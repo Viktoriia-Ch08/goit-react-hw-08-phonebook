@@ -3,12 +3,12 @@ import {
   addContact,
   deleteContacts,
   fetchContacts,
-} from './operations/operations';
+} from 'redux/operations/contacts.operations';
 
 const contactsSlice = createSlice({
-  name: 'phonebook',
+  name: 'contacts',
   initialState: {
-    items: [],
+    contacts: [],
     isLoading: false,
     error: null,
     filter: '',
@@ -22,15 +22,15 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.contacts = action.payload;
       })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.items.push(action.payload);
+        state.contacts.unshift(action.payload);
         state.isLoading = false;
       })
       .addCase(deleteContacts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = state.items.filter(
+        state.contacts = state.contacts.filter(
           contact => !action.payload.includes(contact.id)
         );
       })

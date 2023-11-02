@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { FormButton, FormElement, Input, Label } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations/operations';
+import { selectContacts } from 'redux/selectors/selectors';
+import { addContact } from 'redux/operations/contacts.operations';
 import {
   failedNotification,
   successfullNotification,
 } from 'services/notifications';
 
-export default function Form() {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
@@ -29,6 +29,7 @@ export default function Form() {
 
   const handleSubmitButton = e => {
     e.preventDefault();
+    debugger;
     const data = { name, number };
     contacts.some(element => element.name === data.name)
       ? failedNotification('This contact has already exists')
@@ -80,4 +81,5 @@ export default function Form() {
       <FormButton type="submit">Add contact</FormButton>
     </FormElement>
   );
-}
+};
+export default ContactForm;

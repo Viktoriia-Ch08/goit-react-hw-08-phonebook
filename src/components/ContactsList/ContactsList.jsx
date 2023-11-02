@@ -1,25 +1,45 @@
 import { ButtonWrapper, DeleteButton, Item, List } from './ContactsList.styled';
 import { FaTrashAlt } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, CSSProperties } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectFilterValue,
   selectIsLoading,
-} from 'redux/selectors';
-import { deleteContacts } from 'redux/operations/operations';
+} from 'redux/selectors/selectors';
+import {
+  deleteContacts,
+  fetchContacts,
+} from 'redux/operations/contacts.operations';
 import {
   failedNotification,
   successfullNotification,
 } from 'services/notifications';
+import { ClipLoader } from 'react-spinners';
+import { useEffect } from 'react';
 
 export default function ContactsList() {
   const [contactsIdsToDelete, setContactIdsToDelete] = useState([]);
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilterValue);
   const loading = useSelector(selectIsLoading);
-
   const dispatch = useDispatch();
+
+  console.log(contacts);
+
+  const override: CSSProperties = {
+    display: 'block',
+    margin: '0 auto',
+    borderColor: 'black',
+  };
+
+  useEffect(() => {
+    dispatch(fetchContacts())
+      .unwrap()
+      .catch(error =>
+        failedNotification(`😭 Sorry, smth went wrong: ${error.message}`)
+      );
+  }, [dispatch]);
 
   const handleDeleteContacts = contactsToDelete => {
     dispatch(deleteContacts(contactsToDelete))
@@ -48,6 +68,14 @@ export default function ContactsList() {
 
   return (
     <>
+      <ClipLoader
+        color={'black'}
+        loading={loading}
+        cssOverride={override}
+        size={80}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
       <List>
         {contacts !== null &&
           contacts
@@ -65,15 +93,12 @@ export default function ContactsList() {
                     checked={contactsIdsToDelete.includes(contact.id)}
                     onChange={() => handleCheckboxStatus(contact.id)}
                   />
-                  <p>{`${contact.name}: ${contact.phone} ${
-                    contact.type ? `*${contact.type}*` : ''
-                  }`}</p>
+                  <p>{`${contact.name}: ${contact.number}`}</p>
                 </Item>
               </label>
             ))}
       </List>
-
-      {!loading && (
+      {contacts.length !== 0 ? (
         <ButtonWrapper>
           <DeleteButton
             type="button"
@@ -89,6 +114,8 @@ export default function ContactsList() {
             <FaTrashAlt className="icon" />
           </DeleteButton>
         </ButtonWrapper>
+      ) : (
+        <h2>There are no contacts</h2>
       )}
     </>
   );
