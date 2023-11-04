@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUserThunk } from 'redux/operations/auth.operations';
 import { useEffect } from 'react';
 import {} from 'react-spinners';
-import { failedNotification } from 'services/notifications';
+// import { failedNotification } from 'services/notifications';
 import Layout from './Layout';
 import Home from 'pages/Home';
 import { Route, Routes } from 'react-router-dom';
