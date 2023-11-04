@@ -29,7 +29,6 @@ const ContactForm = () => {
 
   const handleSubmitButton = e => {
     e.preventDefault();
-    debugger;
     const data = { name, number };
     contacts.some(element => element.name === data.name)
       ? failedNotification('This contact has already exists')
