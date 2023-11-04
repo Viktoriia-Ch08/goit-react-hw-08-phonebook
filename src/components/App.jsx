@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import NotFound from 'pages/NotFound';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,8 +26,24 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/contacts" element={<Contacts />}> */}
+
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute>
+                <Login />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute>
+                <Register />
+              </RestrictedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -3,6 +3,7 @@ import {
   addContact,
   deleteContacts,
   fetchContacts,
+  updateContact,
 } from 'redux/operations/contacts.operations';
 
 const contactsSlice = createSlice({
@@ -34,11 +35,19 @@ const contactsSlice = createSlice({
           contact => !action.payload.includes(contact.id)
         );
       })
+      .addCase(updateContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.contacts = state.contacts.map(contact => {
+          if (contact.id === action.payload.id) return action.payload;
+          return contact;
+        });
+      })
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
           addContact.pending,
-          deleteContacts.pending
+          deleteContacts.pending,
+          updateContact.pending
         ),
         state => {
           state.isLoading = true;
@@ -49,7 +58,8 @@ const contactsSlice = createSlice({
         isAnyOf(
           fetchContacts.rejected,
           addContact.rejected,
-          deleteContacts.rejected
+          deleteContacts.rejected,
+          updateContact.rejected
         ),
         (state, action) => {
           state.isLoading = false;
