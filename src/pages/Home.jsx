@@ -1,18 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import AddContact from './AddContact';
 import { selectIsAuthorized } from 'redux/selectors/authSelectors';
 import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
-import { selectContacts, selectIsLoading } from 'redux/selectors/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations/contacts.operations';
-import { refreshUserThunk } from 'redux/operations/auth.operations';
-import { failedNotification } from 'services/notifications';
+import { selectContacts } from 'redux/selectors/selectors';
 
 const Home = () => {
   const contacts = useSelector(selectContacts);
-  const loading = useSelector(selectIsLoading);
   const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
