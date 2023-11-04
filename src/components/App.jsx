@@ -14,11 +14,11 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUserThunk())
-      .unwrap()
-      .catch(error =>
-        failedNotification(`😭 Sorry, smth went wrong: ${error.message}`)
-      );
+    dispatch(refreshUserThunk());
+    // .unwrap()
+    // .catch(error =>
+    //   failedNotification(`😭 Sorry, smth went wrong: ${error.message}`)
+    // );
   }, [dispatch]);
   return (
     <>
