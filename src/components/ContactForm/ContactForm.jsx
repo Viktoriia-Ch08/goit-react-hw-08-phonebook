@@ -8,7 +8,25 @@ import {
   successfullNotification,
 } from 'services/notifications';
 
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+
+const schema = yup
+  .object({
+    name: yup.string().min(3).max(15).required(),
+    number: yup.string().min(5).max(8).required(),
+  })
+  .required();
+
 const ContactForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
