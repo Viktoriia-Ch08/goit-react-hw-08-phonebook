@@ -10,6 +10,9 @@ import Login from 'pages/Login';
 import Register from 'pages/Register';
 import NotFound from 'pages/NotFound';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import AddContact from 'pages/Contacts/Contacts';
+import Contact from 'pages/Contacts/Contacts';
+import Contacts from 'pages/Contacts/Contacts';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,8 +29,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path="/contacts" element={<Contacts />}> */}
-
+          <Route path="/contacts" element={<Contacts />} />
           <Route
             path="/login"
             element={

@@ -1,5 +1,5 @@
 import { Input } from 'components/ContactForm/ContactForm.styled';
-import { FilterContainer, FilterLabel } from './Filter.styled';
+import { FilterContainer, FilterHeader, FilterLabel } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterValue } from 'redux/selectors/selectors';
 import { setFilterValue } from 'redux/slices/contactsSlice';
@@ -14,8 +14,8 @@ const Filter = () => {
 
   return (
     <FilterContainer>
+      <FilterHeader>Find contact name:</FilterHeader>
       <FilterLabel>
-        Find contact name:
         <Input
           type="text"
           name="search"

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 
@@ -10,22 +10,20 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const List = styled.ul`
+export const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
-const Item = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
+export const Item = styled.li`
   text-transform: capitalize;
 `;
 
-const DeleteButton = styled.button`
+export const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,4 +45,3 @@ const DeleteButton = styled.button`
     border: 2px solid black;
   }
 `;
-export { ButtonWrapper, List, Item, DeleteButton };

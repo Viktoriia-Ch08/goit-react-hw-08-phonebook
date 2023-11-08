@@ -10,11 +10,13 @@ import {
   Header,
   HeaderLink,
   Item,
+  LinkContainer,
   List,
   Nav,
 } from './Layout.styled';
 import { FiAlignJustify } from 'react-icons/fi';
 import { IoHomeOutline } from 'react-icons/io5';
+import { RiContactsLine } from 'react-icons/ri';
 
 import MobileMenu from 'components/MobileMenu/MobileMenu';
 import { useState } from 'react';
@@ -36,10 +38,16 @@ const Layout = () => {
         <Nav>
           <List>
             <Item>
-              <HeaderLink to="/">
-                <IoHomeOutline className="home-icon" />
-              </HeaderLink>
+              <LinkContainer>
+                <HeaderLink to="/">
+                  <IoHomeOutline className="home-icon" />
+                </HeaderLink>
+                <HeaderLink to="/contacts">
+                  <RiContactsLine className="home-icon" />
+                </HeaderLink>
+              </LinkContainer>
             </Item>
+
             <Item>
               {!isAuthorized ? (
                 <BurgerButton type="button" onClick={handleMobileMenu}>

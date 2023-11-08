@@ -1,18 +1,22 @@
 import styled from 'styled-components';
 
-const FilterContainer = styled.div`
+export const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 
+  margin-top: 100px;
   margin-bottom: 25px;
 `;
 
-const FilterLabel = styled.label`
+export const FilterLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-export { FilterLabel, FilterContainer };
+export const FilterHeader = styled.h3`
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+`;

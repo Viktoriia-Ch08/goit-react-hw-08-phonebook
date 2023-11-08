@@ -37,6 +37,8 @@ export const BurgerButton = styled.button`
 `;
 
 export const HeaderLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border: none;
 
@@ -45,4 +47,10 @@ export const HeaderLink = styled(NavLink)`
     height: 25px;
     text-align: center;
   }
+`;
+
+export const LinkContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;

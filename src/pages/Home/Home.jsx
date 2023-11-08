@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import AddContact from '../AddContact';
+import AddContact from '../Contacts/Contacts';
 import { selectIsAuthorized } from 'redux/selectors/authSelectors';
 import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
@@ -8,7 +8,6 @@ import { HomeHeader, HomeText } from './Home.styled';
 import ContactForm from 'components/ContactForm/ContactForm';
 
 const Home = () => {
-  const contacts = useSelector(selectContacts);
   const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
@@ -25,14 +24,7 @@ const Home = () => {
         </>
       ) : (
         <>
-          {/* <AddContact /> */}
           <ContactForm />
-          {Array.isArray(contacts) && (
-            <>
-              <Filter />
-              <ContactsList />
-            </>
-          )}
         </>
       )}
     </div>

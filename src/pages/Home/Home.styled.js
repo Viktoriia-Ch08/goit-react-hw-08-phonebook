@@ -9,6 +9,5 @@ export const HomeHeader = styled.h1`
 `;
 
 export const HomeText = styled.p`
-  /* padding-left: ; */
   text-align: justify;
 `;

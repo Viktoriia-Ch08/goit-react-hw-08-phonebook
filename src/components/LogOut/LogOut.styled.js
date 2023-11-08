@@ -3,16 +3,23 @@ import styled from 'styled-components';
 export const LogOutContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const LogOutBtn = styled.button`
-  border: none;
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px groove black;
+  border-radius: 10px;
   background-color: transparent;
 
   .logout-btn-icon {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
+    padding: 6px;
     text-align: center;
   }
 `;

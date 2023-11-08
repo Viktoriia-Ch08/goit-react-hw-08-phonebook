@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Item } from '../ContactsList.styled';
 import EditingForm from 'components/EditingForm/EditingForm';
+import { BiEditAlt } from 'react-icons/bi';
+import { ContactLabel } from './ContactItem.styled';
 
 const ContactItem = ({
   name,
@@ -23,7 +25,7 @@ const ContactItem = ({
     <>
       {!isEditing ? (
         <Item>
-          <label>
+          <ContactLabel>
             <input
               type="checkbox"
               name="contactToDelete"
@@ -32,9 +34,9 @@ const ContactItem = ({
             />
             <p>{`${name}: ${number}`}</p>
             <button type="button" onClick={() => setIsEditing(true)}>
-              Edit
+              <BiEditAlt className="edit-btn-icon" />
             </button>
-          </label>
+          </ContactLabel>
         </Item>
       ) : (
         <EditingForm

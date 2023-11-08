@@ -11,6 +11,7 @@ import {
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import AddContactButton from 'components/AddContactButton/AddContactButton';
 
 const schema = yup
   .object({
@@ -70,32 +71,30 @@ const ContactForm = () => {
   return (
     <FormElement onSubmit={handleSubmitButton}>
       <Label>
-        Name
+        <span className="label-thumb">Name</span>
         <Input
           type="text"
           name="name"
           value={name}
           onChange={handleInputChange}
           placeholder="Adam Smith"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
       </Label>
       <Label>
-        Number
+        <span className="label-thumb">Number</span>
+
         <Input
           type="tel"
           name="number"
           value={number}
           onChange={handleInputChange}
-          placeholder="+380(88)-233-22-22"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          placeholder="233-22-22"
+          maxLength={9}
           required
         />
       </Label>
-      <FormButton type="submit">Add contact</FormButton>
+      <AddContactButton />
     </FormElement>
   );
 };
