@@ -1,4 +1,4 @@
-import { Input } from 'components/ContactForm/ContactForm.styled';
+import { Input } from 'components/ForAllComponents/ForAll.styled';
 import { FilterContainer, FilterHeader, FilterLabel } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterValue } from 'redux/selectors/selectors';

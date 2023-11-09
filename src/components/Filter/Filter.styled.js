@@ -6,7 +6,6 @@ export const FilterContainer = styled.div`
   align-items: center;
   gap: 10px;
 
-  margin-top: 100px;
   margin-bottom: 25px;
 `;
 

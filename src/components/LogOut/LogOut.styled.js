@@ -26,5 +26,5 @@ export const LogOutBtn = styled.button`
 
 export const LogOutText = styled.p`
   font-family: 'Dancing Script', cursive;
-  font-size: 24px;
+  font-size: 20px;
 `;

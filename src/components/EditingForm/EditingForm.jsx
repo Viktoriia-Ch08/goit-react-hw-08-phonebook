@@ -3,11 +3,22 @@ import { updateContact } from 'redux/operations/contacts.operations';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  ButtonContainer,
+  EditInput,
+  Form,
+  FormContainer,
+  Label,
+} from './EditingForm.styled';
+import { TfiSave } from 'react-icons/tfi';
+import { IoClose } from 'react-icons/io5';
+import { Button } from 'components/ForAllComponents/ForAll.styled';
+import { successfullNotification } from 'services/notifications';
 
 const schema = yup
   .object({
     name: yup.string().min(3).max(15).required(),
-    number: yup.string().min(5).max(8).required(),
+    number: yup.string().max(9).required(),
   })
   .required();
 
@@ -28,25 +39,40 @@ const EditingForm = ({ id, name, number, closeEditingForm }) => {
       number,
       id,
     };
-    dispatch(updateContact(newContact)).then(() => closeEditingForm(false));
+    dispatch(updateContact(newContact)).then(() => {
+      successfullNotification('Wow! You have update your contact');
+      closeEditingForm(false);
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <input defaultValue={name} {...register('name', { required: true })} />
-        <input
-          defaultValue={number}
-          {...register('number', { required: true })}
-        />
-        <button type="submit">Save</button>
-        <button type="button" onClick={() => closeEditingForm(false)}>
-          close
-        </button>
-      </label>
-      {errors.name && <span>{errors.name.message}</span>}
-      {errors.number && <span>{errors.number.message}</span>}
-    </form>
+    <FormContainer>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Label>
+          <span className="label-thumb">Edit Name:</span>
+          <EditInput
+            defaultValue={name}
+            {...register('name', { required: true })}
+          />
+          <span className="label-thumb">Edit Number:</span>
+          <EditInput
+            defaultValue={number}
+            {...register('number', { required: true })}
+          />
+          <ButtonContainer>
+            <Button type="submit">
+              <TfiSave className="btn-icon" />
+            </Button>
+            <Button type="button" onClick={() => closeEditingForm(false)}>
+              <IoClose className="btn-icon" />
+            </Button>
+          </ButtonContainer>
+        </Label>
+
+        {errors.name && <span>{errors.name.message}</span>}
+        {errors.number && <span>{errors.number.message}</span>}
+      </Form>
+    </FormContainer>
   );
 };
 

@@ -7,6 +7,7 @@ import {
   AuthItem,
   AuthLinkContainer,
   BurgerButton,
+  Container,
   Header,
   HeaderLink,
   Item,
@@ -17,19 +18,20 @@ import {
 import { FiAlignJustify } from 'react-icons/fi';
 import { IoHomeOutline } from 'react-icons/io5';
 import { RiContactsLine } from 'react-icons/ri';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import MobileMenu from 'components/MobileMenu/MobileMenu';
 import { useState } from 'react';
 import LogOut from 'components/LogOut/LogOut';
+import { BounceLoader } from 'react-spinners';
 
 const Layout = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMobileMenu = () => {
     setIsMobileMenuOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   return (
@@ -42,6 +44,9 @@ const Layout = () => {
                 <HeaderLink to="/">
                   <IoHomeOutline className="home-icon" />
                 </HeaderLink>
+                <HeaderLink to="/addContact">
+                  <AiOutlineUserAdd className="home-icon" />
+                </HeaderLink>
                 <HeaderLink to="/contacts">
                   <RiContactsLine className="home-icon" />
                 </HeaderLink>
@@ -51,7 +56,7 @@ const Layout = () => {
             <Item>
               {!isAuthorized ? (
                 <BurgerButton type="button" onClick={handleMobileMenu}>
-                  <FiAlignJustify style={{ width: '35px', height: '35px' }} />
+                  <FiAlignJustify className="burger-btn-icon" />
                 </BurgerButton>
               ) : (
                 <LogOut />
@@ -63,20 +68,22 @@ const Layout = () => {
           )}
         </Nav>
       </Header>
-      <Suspense
-        fallback={
-          <div>
-            {/* <BounceLoader
-              className="loader"
-              loading={true}
-              color={'#751975'}
-              size={80}
-            /> */}
-          </div>
-        }
-      >
-        <Outlet />
-      </Suspense>
+      <>
+        <Suspense
+          fallback={
+            <div>
+              <BounceLoader
+                className="loader"
+                loading={true}
+                color={'#751975'}
+                size={80}
+              />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
+      </>
     </>
   );
 };

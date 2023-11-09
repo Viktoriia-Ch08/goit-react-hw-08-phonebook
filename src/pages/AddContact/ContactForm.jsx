@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FormButton, FormElement, Input, Label } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors/selectors';
 import { addContact } from 'redux/operations/contacts.operations';
@@ -12,6 +11,14 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import AddContactButton from 'components/AddContactButton/AddContactButton';
+import { useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  Container,
+  Form,
+  Input,
+  Label,
+} from 'components/ForAllComponents/ForAll.styled';
 
 const schema = yup
   .object({
@@ -30,6 +37,7 @@ const ContactForm = () => {
   });
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const navigate = useNavigate();
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -54,13 +62,13 @@ const ContactForm = () => {
       : dispatch(addContact(data))
           .unwrap()
           .then(() => {
+            reset();
+            navigate('/contacts');
             successfullNotification('You have added the contact!');
           })
           .catch(() =>
             failedNotification(`Smth went wrong, you didn't add a contact 😭`)
           );
-
-    reset();
   };
 
   const reset = () => {
@@ -69,33 +77,35 @@ const ContactForm = () => {
   };
 
   return (
-    <FormElement onSubmit={handleSubmitButton}>
-      <Label>
-        <span className="label-thumb">Name</span>
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleInputChange}
-          placeholder="Adam Smith"
-          required
-        />
-      </Label>
-      <Label>
-        <span className="label-thumb">Number</span>
+    <Container>
+      <Form onSubmit={handleSubmitButton}>
+        <Label>
+          <span className="label-thumb">Name</span>
+          <Input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleInputChange}
+            placeholder="Adam Smith"
+            required
+          />
+        </Label>
+        <Label>
+          <span className="label-thumb">Number</span>
 
-        <Input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleInputChange}
-          placeholder="233-22-22"
-          maxLength={9}
-          required
-        />
-      </Label>
-      <AddContactButton />
-    </FormElement>
+          <Input
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleInputChange}
+            placeholder="233-22-22"
+            maxLength={9}
+            required
+          />
+        </Label>
+        <AddContactButton />
+      </Form>
+    </Container>
   );
 };
 export default ContactForm;

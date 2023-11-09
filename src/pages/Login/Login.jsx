@@ -8,14 +8,14 @@ import {
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registerThunk } from 'redux/operations/auth.operations';
+import { logInThunk } from 'redux/operations/auth.operations';
 import {
   failedNotification,
   successfullNotification,
 } from 'services/notifications';
 import { FiLogIn } from 'react-icons/fi';
 
-const Register = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
@@ -28,13 +28,15 @@ const Register = () => {
 
   const onSubmit = data => {
     console.log(data);
-    dispatch(registerThunk(data))
+    dispatch(logInThunk(data))
       .unwrap()
       .then(() => {
         nav('/');
-        successfullNotification('Congratulations 🥳 You have registered!');
+        successfullNotification('You have logged in 🥳!');
       })
-      .catch(e => failedNotification(`${e}. You didn't register 😭`));
+      .catch(e => {
+        failedNotification(`${e}. You didn't log in 😭`);
+      });
     reset();
   };
 
@@ -42,21 +44,16 @@ const Register = () => {
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
-          <span className="label-thumb">Name:</span>
-
-          <Input type="text" {...register('name', { required: true })} />
-          {errors.name && <span>This field is required</span>}
-        </Label>
-        <Label>
           <span className="label-thumb">Email:</span>
           <Input type="email" {...register('email', { required: true })} />
           {errors.email && <span>This field is required</span>}
         </Label>
         <Label>
           <span className="label-thumb">Password:</span>
+
           <Input
             type="password"
-            {...register('password', { required: true, minLength: 5 })}
+            {...register('password', { required: true })}
           />
           {errors.password && <span>This field is required</span>}
         </Label>
@@ -70,4 +67,5 @@ const Register = () => {
     </Container>
   );
 };
-export default Register;
+
+export default Login;

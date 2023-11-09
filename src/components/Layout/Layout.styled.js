@@ -9,6 +9,7 @@ export const Header = styled.header`
   width: 100%;
 
   border-bottom: 1px solid black;
+  background-color: rgb(255, 189, 189);
 `;
 
 export const Nav = styled.nav`
@@ -34,6 +35,11 @@ export const Item = styled.li`
 export const BurgerButton = styled.button`
   border: none;
   background-color: transparent;
+
+  .burger-btn-icon {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const HeaderLink = styled(NavLink)`
@@ -43,8 +49,8 @@ export const HeaderLink = styled(NavLink)`
   border: none;
 
   .home-icon {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     text-align: center;
   }
 `;
@@ -52,5 +58,5 @@ export const HeaderLink = styled(NavLink)`
 export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;

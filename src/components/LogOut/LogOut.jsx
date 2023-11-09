@@ -3,6 +3,7 @@ import { logOutThunk } from 'redux/operations/auth.operations';
 import { selectUser } from 'redux/selectors/authSelectors';
 import { LogOutBtn, LogOutContainer, LogOutText } from './LogOut.styled';
 import { VscSignOut } from 'react-icons/vsc';
+import { Button } from 'components/ForAllComponents/ForAll.styled';
 
 const LogOut = () => {
   const user = useSelector(selectUser);
@@ -12,9 +13,9 @@ const LogOut = () => {
       {user.name !== null && (
         <LogOutText>Hello, {`${user.name.substring(0, 10)}...`}</LogOutText>
       )}
-      <LogOutBtn type="submit" onClick={() => dispatch(logOutThunk())}>
-        <VscSignOut className="logout-btn-icon" />
-      </LogOutBtn>
+      <Button type="submit" onClick={() => dispatch(logOutThunk())}>
+        <VscSignOut className="btn-icon" />
+      </Button>
     </LogOutContainer>
   );
 };

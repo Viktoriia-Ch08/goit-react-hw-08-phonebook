@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import bgImg from '../../assets/mobile-menu-bg.png';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -8,7 +9,12 @@ export const Backdrop = styled.div`
   bottom: 0;
   left: 0;
 
-  background-color: white;
+  background-color: rgb(201, 201, 255);
+
+  background-image: url(${bgImg});
+  background-size: 340px;
+  background-repeat: no-repeat;
+  background-position: center 170px;
 `;
 
 export const CloseButton = styled.button`
@@ -41,8 +47,7 @@ export const AuthItem = styled.li`
 export const AuthLink = styled(NavLink)`
   font-size: 24px;
   font-weight: 500;
-
-  width: 100%;
+  width: 100px;
   height: 35px;
   padding: 5px;
 `;

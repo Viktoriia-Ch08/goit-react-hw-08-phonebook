@@ -18,6 +18,9 @@ const contactsSlice = createSlice({
     setFilterValue(state, action) {
       state.filter = action.payload;
     },
+    setIsLoading(state, action) {
+      state.isLoading = action.payload;
+    },
   },
   extraReducers: builder => {
     builder

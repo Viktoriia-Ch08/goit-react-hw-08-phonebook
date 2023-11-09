@@ -1,8 +1,18 @@
 import { useState } from 'react';
-import { Item } from '../ContactsList.styled';
 import EditingForm from 'components/EditingForm/EditingForm';
 import { BiEditAlt } from 'react-icons/bi';
-import { ContactLabel } from './ContactItem.styled';
+import {
+  CheckBox,
+  ContactImage,
+  ContactInfo,
+  ContactLabel,
+  EditingBtn,
+  Item,
+  NameText,
+  NumberText,
+} from './ContactItem.styled';
+import defaultImg from '../../../assets//default_contact_img.png';
+import { Button } from 'components/ForAllComponents/ForAll.styled';
 
 const ContactItem = ({
   name,
@@ -26,17 +36,21 @@ const ContactItem = ({
       {!isEditing ? (
         <Item>
           <ContactLabel>
-            <input
+            <CheckBox
               type="checkbox"
               name="contactToDelete"
               checked={contactsIdsToDelete.includes(id)}
               onChange={() => handleCheckboxStatus(id)}
             />
-            <p>{`${name}: ${number}`}</p>
-            <button type="button" onClick={() => setIsEditing(true)}>
-              <BiEditAlt className="edit-btn-icon" />
-            </button>
+            <ContactImage src={defaultImg} alt="Contact image" />
+            <ContactInfo>
+              <NameText>{name}</NameText>
+              <NumberText>{number}</NumberText>
+            </ContactInfo>
           </ContactLabel>
+          <Button type="button" onClick={() => setIsEditing(true)}>
+            <BiEditAlt className="btn-icon" />
+          </Button>
         </Item>
       ) : (
         <EditingForm

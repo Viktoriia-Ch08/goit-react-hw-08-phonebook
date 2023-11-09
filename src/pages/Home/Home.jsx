@@ -1,33 +1,30 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AddContact from '../Contacts/Contacts';
 import { selectIsAuthorized } from 'redux/selectors/authSelectors';
 import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
-import { selectContacts } from 'redux/selectors/selectors';
-import { HomeHeader, HomeText } from './Home.styled';
-import ContactForm from 'components/ContactForm/ContactForm';
+import { selectContacts, selectIsLoading } from 'redux/selectors/selectors';
+import { HomeHeader, HomeText, SpecialText } from './Home.styled';
+import { Container } from 'components/ForAllComponents/ForAll.styled';
 
 const Home = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
-
   return (
-    <div className="container">
-      <HomeHeader>Phonebook</HomeHeader>
+    <Container>
+      <HomeHeader> Phonebook</HomeHeader>
       {!isAuthorized ? (
-        <>
-          <HomeText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, qui
-            incidunt! Soluta iure deserunt amet porro dignissimos impedit odit
-            sed laboriosam, obcaecati dolores ex vero quaerat. Voluptatum non
-            reprehenderit animi porro.
-          </HomeText>
-        </>
+        <HomeText>
+          Welcome! Click on the menu burger in the upper right corner to{' '}
+          <SpecialText>log in</SpecialText> or{' '}
+          <SpecialText>register</SpecialText>
+        </HomeText>
       ) : (
-        <>
-          <ContactForm />
-        </>
+        <HomeText>
+          It is an application that allows you to add, edit, search, and delete
+          contacts. Enjoy using it!
+        </HomeText>
       )}
-    </div>
+    </Container>
   );
 };
 

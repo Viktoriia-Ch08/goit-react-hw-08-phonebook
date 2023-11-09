@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 360px;
   margin: 50px auto;
   margin-top: 50px;
@@ -16,14 +16,12 @@ const Container = styled.div`
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
-const Headline = styled.h1`
+export const Headline = styled.h1`
   margin-bottom: 20px;
   text-align: center;
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
   margin-bottom: 8px;
   text-align: center;
 `;
-
-export { Container, Headline, Title };

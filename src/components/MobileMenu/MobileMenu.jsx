@@ -9,7 +9,13 @@ const MobileMenu = ({ closeMobileMenu }) => {
 
   return (
     <Backdrop>
-      <CloseButton type="button" onClick={() => closeMobileMenu(false)}>
+      <CloseButton
+        type="button"
+        onClick={() => {
+          closeMobileMenu(false);
+          document.body.style.overflow = 'scroll';
+        }}
+      >
         <IoIosClose className="close-icon-btn" />
       </CloseButton>
       {!isAuthorized && (

@@ -1,14 +1,12 @@
-import {
-  ButtonWrapper,
-  DeleteButton,
-} from 'components/ContactsList/ContactsList.styled';
-import { FaTrashAlt } from 'react-icons/fa';
+import { ImBin } from 'react-icons/im';
 import { useDispatch } from 'react-redux';
 import { deleteContacts } from 'redux/operations/contacts.operations';
 import {
   failedNotification,
   successfullNotification,
 } from 'services/notifications';
+import { ButtonWrapper, DeleteButton } from './DeleteButton.styled';
+import { Button, MainButton } from 'components/ForAllComponents/ForAll.styled';
 
 const DeleteButtonComponent = ({
   setContactIdsToDelete,
@@ -20,7 +18,7 @@ const DeleteButtonComponent = ({
 
   return (
     <ButtonWrapper>
-      <DeleteButton
+      <MainButton
         type="button"
         onClick={() => {
           if (contactsIdsToDelete.length === 0) {
@@ -42,8 +40,8 @@ const DeleteButtonComponent = ({
           }
         }}
       >
-        <FaTrashAlt className="icon" />
-      </DeleteButton>
+        <ImBin className="btn-icon" />
+      </MainButton>
     </ButtonWrapper>
   );
 };
