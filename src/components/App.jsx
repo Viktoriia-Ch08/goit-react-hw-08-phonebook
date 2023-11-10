@@ -9,10 +9,11 @@ import { Route, Routes } from 'react-router-dom';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register';
 import NotFound from 'pages/NotFound';
-import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import AddContact from 'pages/Contacts/Contacts';
 import Contacts from 'pages/Contacts/Contacts';
 import ContactForm from '../pages/AddContact/ContactForm';
+import AuthRestrictedRoute from './RestrictedRoute/AuthRestrictedRoute';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -41,8 +42,22 @@ export default function App() {
               </RestrictedRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <AuthRestrictedRoute>
+                <Login />
+              </AuthRestrictedRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <AuthRestrictedRoute>
+                <Register />
+              </AuthRestrictedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

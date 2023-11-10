@@ -44,12 +44,16 @@ const Layout = () => {
                 <HeaderLink to="/">
                   <IoHomeOutline className="home-icon" />
                 </HeaderLink>
-                <HeaderLink to="/addContact">
-                  <AiOutlineUserAdd className="home-icon" />
-                </HeaderLink>
-                <HeaderLink to="/contacts">
-                  <RiContactsLine className="home-icon" />
-                </HeaderLink>
+                {isAuthorized && (
+                  <>
+                    <HeaderLink to="/addContact">
+                      <AiOutlineUserAdd className="home-icon" />
+                    </HeaderLink>
+                    <HeaderLink to="/contacts">
+                      <RiContactsLine className="home-icon" />
+                    </HeaderLink>
+                  </>
+                )}
               </LinkContainer>
             </Item>
 
