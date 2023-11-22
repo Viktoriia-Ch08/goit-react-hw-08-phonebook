@@ -42,3 +42,9 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
 `;
+
+export const WarningSpan = styled.span`
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  text-align: center;
+`;

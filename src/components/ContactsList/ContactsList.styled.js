@@ -1,3 +1,4 @@
+import { responsive } from 'scss/_mixins';
 import styled from 'styled-components';
 
 export const List = styled.ul`
@@ -7,4 +8,9 @@ export const List = styled.ul`
   margin-bottom: 10px;
   padding-left: 16px;
   padding-right: 16px;
+
+  ${responsive.desktop.standard`
+    padding-left: 30px;
+  padding-right: 30px;
+  `};
 `;

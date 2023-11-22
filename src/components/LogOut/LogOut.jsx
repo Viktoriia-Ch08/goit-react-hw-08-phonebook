@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutThunk } from 'redux/operations/auth.operations';
 import { selectUser } from 'redux/selectors/authSelectors';
-import { LogOutBtn, LogOutContainer, LogOutText } from './LogOut.styled';
+import { LogOutContainer, LogOutText } from './LogOut.styled';
 import { VscSignOut } from 'react-icons/vsc';
 import { Button } from 'components/ForAllComponents/ForAll.styled';
 

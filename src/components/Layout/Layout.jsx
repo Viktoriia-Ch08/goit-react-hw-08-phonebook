@@ -5,6 +5,7 @@ import { logOutThunk } from 'redux/operations/auth.operations';
 import { selectIsAuthorized, selectUser } from 'redux/selectors/authSelectors';
 import {
   AuthItem,
+  AuthLink,
   AuthLinkContainer,
   BurgerButton,
   Container,
@@ -14,6 +15,7 @@ import {
   LinkContainer,
   List,
   Nav,
+  NavContainerTablet,
 } from './Layout.styled';
 import { FiAlignJustify } from 'react-icons/fi';
 import { IoHomeOutline } from 'react-icons/io5';
@@ -59,9 +61,15 @@ const Layout = () => {
 
             <Item>
               {!isAuthorized ? (
-                <BurgerButton type="button" onClick={handleMobileMenu}>
-                  <FiAlignJustify className="burger-btn-icon" />
-                </BurgerButton>
+                <>
+                  <BurgerButton type="button" onClick={handleMobileMenu}>
+                    <FiAlignJustify className="burger-btn-icon" />
+                  </BurgerButton>
+                  <NavContainerTablet>
+                    <AuthLink to="/login">Login</AuthLink>
+                    <AuthLink to="/register">Register</AuthLink>
+                  </NavContainerTablet>
+                </>
               ) : (
                 <LogOut />
               )}

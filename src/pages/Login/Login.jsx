@@ -1,6 +1,7 @@
 import {
   Button,
   Container,
+  ErrorSpan,
   Form,
   Input,
   Label,
@@ -45,20 +46,18 @@ const Login = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
           <span className="label-thumb">Email:</span>
+          {errors.email && <ErrorSpan>This field is required</ErrorSpan>}
+
           <Input type="email" {...register('email', { required: true })} />
-          {errors.email && <span>This field is required</span>}
         </Label>
         <Label>
           <span className="label-thumb">Password:</span>
-
+          {errors.password && <ErrorSpan>This field is required</ErrorSpan>}
           <Input
             type="password"
             {...register('password', { required: true })}
           />
-          {errors.password && <span>This field is required</span>}
         </Label>
-
-        {errors.exampleRequired && <span>This field is required</span>}
 
         <Button type="submit">
           <FiLogIn className="btn-icon" />

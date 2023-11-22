@@ -1,9 +1,14 @@
+import { responsive } from 'scss/_mixins';
 import styled from 'styled-components';
 
 export const ContactLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  ${responsive.desktop.standard`
+  gap: 20px;
+  `};
 `;
 
 export const Item = styled.li`
@@ -18,11 +23,19 @@ export const ContactImage = styled.img`
 
   border-radius: 50%;
   background-color: gray;
+  ${responsive.desktop.standard`
+     width: 60px;
+  height: 60px;
+  `};
 `;
 
 export const CheckBox = styled.input`
   width: 15px;
   height: 15px;
+  ${responsive.desktop.standard`
+     width: 20px;
+  height: 20px;
+  `};
 `;
 
 export const ContactInfo = styled.div`
@@ -35,25 +48,23 @@ export const NameText = styled.p`
 
   font-size: 24px;
   font-weight: 500;
+
+  ${responsive.tablet.standard`
+     font-size: 30px;
+  `};
+  ${responsive.desktop.standard`
+     font-size: 40px;
+  `};
 `;
 
 export const NumberText = styled.p`
   font-size: 12px;
   font-weight: 400;
-`;
 
-export const EditingBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 1px groove black;
-  border-radius: 10px;
-  background-color: transparent;
-
-  .edit-btn-icon {
-    width: 20px;
-    height: 20px;
-  }
+  ${responsive.tablet.standard`
+     font-size: 16px;
+  `};
+  ${responsive.desktop.standard`
+     font-size: 24px;
+  `};
 `;

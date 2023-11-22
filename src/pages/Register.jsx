@@ -1,6 +1,7 @@
 import {
   Button,
   Container,
+  ErrorSpan,
   Form,
   Input,
   Label,
@@ -27,7 +28,6 @@ const Register = () => {
   const nav = useNavigate();
 
   const onSubmit = data => {
-    console.log(data);
     dispatch(registerThunk(data))
       .unwrap()
       .then(() => {
@@ -44,24 +44,27 @@ const Register = () => {
         <Label>
           <span className="label-thumb">Name:</span>
 
-          <Input type="text" {...register('name', { required: true })} />
-          {errors.name && <span>This field is required</span>}
+          {errors.name && <ErrorSpan>This field is required</ErrorSpan>}
+          <Input
+            type="text"
+            {...register('name', {
+              required: true,
+            })}
+          />
         </Label>
         <Label>
           <span className="label-thumb">Email:</span>
+          {errors.email && <ErrorSpan>This field is required</ErrorSpan>}
           <Input type="email" {...register('email', { required: true })} />
-          {errors.email && <span>This field is required</span>}
         </Label>
         <Label>
           <span className="label-thumb">Password:</span>
+          {errors.password && <ErrorSpan>This field is required</ErrorSpan>}
           <Input
             type="password"
             {...register('password', { required: true, minLength: 5 })}
           />
-          {errors.password && <span>This field is required</span>}
         </Label>
-
-        {errors.exampleRequired && <span>This field is required</span>}
 
         <Button type="submit">
           <FiLogIn className="btn-icon" />

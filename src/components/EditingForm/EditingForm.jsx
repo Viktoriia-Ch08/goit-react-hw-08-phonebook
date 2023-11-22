@@ -9,6 +9,7 @@ import {
   Form,
   FormContainer,
   Label,
+  WarningSpan,
 } from './EditingForm.styled';
 import { TfiSave } from 'react-icons/tfi';
 import { IoClose } from 'react-icons/io5';
@@ -50,11 +51,13 @@ const EditingForm = ({ id, name, number, closeEditingForm }) => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
           <span className="label-thumb">Edit Name:</span>
+          {errors.name && <WarningSpan>{errors.name.message}</WarningSpan>}
           <EditInput
             defaultValue={name}
             {...register('name', { required: true })}
           />
           <span className="label-thumb">Edit Number:</span>
+          {errors.number && <WarningSpan>{errors.number.message}</WarningSpan>}
           <EditInput
             defaultValue={number}
             {...register('number', { required: true })}
@@ -68,9 +71,6 @@ const EditingForm = ({ id, name, number, closeEditingForm }) => {
             </Button>
           </ButtonContainer>
         </Label>
-
-        {errors.name && <span>{errors.name.message}</span>}
-        {errors.number && <span>{errors.number.message}</span>}
       </Form>
     </FormContainer>
   );

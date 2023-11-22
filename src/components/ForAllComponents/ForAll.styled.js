@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import bgImg from '../../assets/bg.png';
+import { responsive } from 'scss/_mixins';
 
 export const Button = styled.button`
   display: flex;
@@ -11,6 +12,7 @@ export const Button = styled.button`
   border: 1px groove black;
   border-radius: 10px;
   background-color: transparent;
+  backdrop-filter: blur(10px);
   transition: box-shadow 300ms linear, background-color 300ms linear,
     border 300ms linear;
 
@@ -21,10 +23,28 @@ export const Button = styled.button`
     background-color: rgba(104, 105, 117, 0.9);
     border: 2px solid black;
   }
+  ${responsive.tablet.standard`
+    width: 40px;
+    height: 40px;
+  `};
+
+  ${responsive.desktop.standard`
+    width: 50px;
+    height: 50px;
+  `};
 
   .btn-icon {
     width: 20px;
     height: 20px;
+
+    ${responsive.tablet.standard`
+     width: 25px;
+    height: 25px;
+  `};
+    ${responsive.desktop.standard`
+    width: 30px;
+    height: 30px;
+  `};
   }
 
   .delete-btn {
@@ -36,7 +56,6 @@ export const Button = styled.button`
 export const MainButton = styled.button`
   width: 45px;
   height: 45px;
-  margin-bottom: 10px;
 
   font-weight: 700;
   text-transform: uppercase;
@@ -45,6 +64,7 @@ export const MainButton = styled.button`
   border-radius: 10px;
   box-shadow: none;
   background-color: transparent;
+  backdrop-filter: blur(10px);
   transition: box-shadow 300ms linear, background-color 300ms linear,
     border 300ms linear;
 
@@ -55,10 +75,24 @@ export const MainButton = styled.button`
     background-color: rgba(104, 105, 117, 0.9);
     border: 2px solid black;
   }
+  ${responsive.desktop.standard`
+    width: 55px;
+    height: 55px;
+  `};
 
   .btn-icon {
     width: 20px;
     height: 20px;
+
+    ${responsive.tablet.standard`
+     width: 25px;
+    height: 25px;
+  `};
+
+    ${responsive.desktop.standard`
+    width: 30px;
+    height: 30px;
+  `};
   }
 `;
 
@@ -73,13 +107,18 @@ export const Container = styled.div`
     url(${bgImg});
   background-size: 180px;
   background-position: center;
+
+  ${responsive.tablet.standard`
+    margin-top: 70px;
+  padding-top: 60px;
+  `};
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const Label = styled.label`
@@ -91,6 +130,14 @@ export const Label = styled.label`
     padding-left: 20px;
     font-family: 'Caveat', cursive;
     font-size: 14px;
+
+    ${responsive.tablet.standard`
+     font-size: 18px;
+  `};
+
+    ${responsive.desktop.standard`
+  font-size: 24px;
+  `};
   }
 `;
 
@@ -107,4 +154,15 @@ export const Input = styled.input`
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
+
+  ${responsive.desktop.standard`
+    width: 270px;
+    height: 35px;
+  `};
+`;
+
+export const ErrorSpan = styled.span`
+  padding-left: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
 `;

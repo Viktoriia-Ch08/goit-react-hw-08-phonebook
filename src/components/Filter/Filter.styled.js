@@ -1,3 +1,4 @@
+import { responsive } from 'scss/_mixins';
 import styled from 'styled-components';
 
 export const FilterContainer = styled.div`
@@ -18,4 +19,12 @@ export const FilterLabel = styled.label`
 export const FilterHeader = styled.h3`
   font-family: 'Dancing Script', cursive;
   font-size: 24px;
+
+  ${responsive.tablet.standard`
+     font-size: 30px;
+  `};
+
+  ${responsive.desktop.standard`
+    font-size: 35px;
+  `};
 `;
