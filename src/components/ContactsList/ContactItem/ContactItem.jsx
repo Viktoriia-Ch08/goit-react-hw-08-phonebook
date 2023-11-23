@@ -6,13 +6,13 @@ import {
   ContactImage,
   ContactInfo,
   ContactLabel,
-  EditingBtn,
   Item,
   NameText,
   NumberText,
 } from './ContactItem.styled';
 import defaultImg from '../../../assets//default_contact_img.png';
 import { Button } from 'components/ForAllComponents/ForAll.styled';
+import { lock } from 'tua-body-scroll-lock';
 
 const ContactItem = ({
   name,
@@ -48,7 +48,13 @@ const ContactItem = ({
               <NumberText>{number}</NumberText>
             </ContactInfo>
           </ContactLabel>
-          <Button type="button" onClick={() => setIsEditing(true)}>
+          <Button
+            type="button"
+            onClick={() => {
+              setIsEditing(true);
+              lock(document.body);
+            }}
+          >
             <BiEditAlt className="btn-icon" />
           </Button>
         </Item>

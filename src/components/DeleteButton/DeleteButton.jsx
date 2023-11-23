@@ -5,8 +5,8 @@ import {
   failedNotification,
   successfullNotification,
 } from 'services/notifications';
-import { ButtonWrapper, DeleteButton } from './DeleteButton.styled';
-import { Button, MainButton } from 'components/ForAllComponents/ForAll.styled';
+import { ButtonWrapper } from './DeleteButton.styled';
+import { MainButton } from 'components/ForAllComponents/ForAll.styled';
 
 const DeleteButtonComponent = ({
   setContactIdsToDelete,

@@ -31,12 +31,13 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const AuthList = styled.div`
+export const AuthListContainer = styled.div`
+  position: fixed;
+  top: 90px;
+  left: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-left: 40px;
-  padding-top: 90px;
 `;
 
 export const AuthItem = styled.li`
@@ -45,9 +46,7 @@ export const AuthItem = styled.li`
 `;
 
 export const AuthLink = styled(NavLink)`
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 500;
-  width: 100px;
-  height: 35px;
   padding: 5px;
 `;

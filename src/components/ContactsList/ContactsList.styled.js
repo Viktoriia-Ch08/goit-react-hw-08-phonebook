@@ -9,8 +9,8 @@ export const List = styled.ul`
   padding-left: 16px;
   padding-right: 16px;
 
-  ${responsive.desktop.standard`
-    padding-left: 30px;
-  padding-right: 30px;
+  ${responsive.tablet.standard`
+    padding-left: 40px;
+  padding-right: 40px;
   `};
 `;

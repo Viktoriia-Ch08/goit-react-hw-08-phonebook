@@ -25,6 +25,6 @@ export const FilterHeader = styled.h3`
   `};
 
   ${responsive.desktop.standard`
-    font-size: 35px;
+    font-size: 40px;
   `};
 `;

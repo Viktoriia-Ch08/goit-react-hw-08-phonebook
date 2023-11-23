@@ -1,9 +1,9 @@
 import { MainButton } from 'components/ForAllComponents/ForAll.styled';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 
-const AddContactButton = () => {
+const AddContactButton = ({ onClick }) => {
   return (
-    <MainButton type="submit">
+    <MainButton type="submit" onClick={onClick}>
       <AiOutlineUserAdd className="btn-icon" />
     </MainButton>
   );

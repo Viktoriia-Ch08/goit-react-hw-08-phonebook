@@ -15,6 +15,7 @@ import { TfiSave } from 'react-icons/tfi';
 import { IoClose } from 'react-icons/io5';
 import { Button } from 'components/ForAllComponents/ForAll.styled';
 import { successfullNotification } from 'services/notifications';
+import { unlock } from 'tua-body-scroll-lock';
 
 const schema = yup
   .object({
@@ -66,7 +67,13 @@ const EditingForm = ({ id, name, number, closeEditingForm }) => {
             <Button type="submit">
               <TfiSave className="btn-icon" />
             </Button>
-            <Button type="button" onClick={() => closeEditingForm(false)}>
+            <Button
+              type="button"
+              onClick={() => {
+                closeEditingForm(false);
+                unlock(document.body);
+              }}
+            >
               <IoClose className="btn-icon" />
             </Button>
           </ButtonContainer>

@@ -1,14 +1,10 @@
 import { Suspense } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet } from 'react-router-dom';
-import { logOutThunk } from 'redux/operations/auth.operations';
-import { selectIsAuthorized, selectUser } from 'redux/selectors/authSelectors';
+import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import { selectIsAuthorized } from 'redux/selectors/authSelectors';
 import {
-  AuthItem,
   AuthLink,
-  AuthLinkContainer,
   BurgerButton,
-  Container,
   Header,
   HeaderLink,
   Item,

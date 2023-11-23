@@ -1,3 +1,4 @@
+import { responsive } from 'scss/_mixins';
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
@@ -12,7 +13,10 @@ export const FormContainer = styled.div`
 `;
 
 export const Form = styled.form`
-  margin-top: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Label = styled.label`
@@ -22,9 +26,21 @@ export const Label = styled.label`
   justify-content: center;
   gap: 8px;
 
+  ${responsive.tablet.standard`
+     gap: 15px;
+  `};
+
   .label-thumb {
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
+
+    ${responsive.tablet.standard`
+     font-size: 30px;
+  `};
+
+    ${responsive.desktop.standard`
+     font-size: 36px;
+  `};
   }
 `;
 
