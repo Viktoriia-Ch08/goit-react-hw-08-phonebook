@@ -11,7 +11,7 @@ export const HomeHeader = styled.h1`
   `};
 
   ${responsive.desktop.standard`
-   font-size: 45px;
+   font-size: 55px;
   `};
 `;
 
@@ -27,10 +27,11 @@ export const HomeText = styled.p`
   `};
   ${responsive.desktop.standard`
   width: 500px;
-   font-size: 24px;
+   font-size: 30px;
   `};
 `;
 
 export const SpecialText = styled.span`
   text-decoration: underline;
+  cursor: pointer;
 `;
