@@ -81,7 +81,6 @@ export default function ContactsList() {
               contactsIdsToDelete={contactsIdsToDelete}
             />
           )}
-          {user && contacts.length === 0 && <h2>There are no contacts</h2>}
         </>
       )}
     </>
